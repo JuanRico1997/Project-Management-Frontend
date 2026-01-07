@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Proyecto</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>📋 Sistema de Gestión de Proyectos</h1>
+        <div class="header-actions">
+            <span class="user-info" id="userInfo"></span>
+            <button class="btn btn-secondary btn-small" onclick="logout()">
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
+
+    <!-- Project Detail -->
+    <div class="dashboard">
+        <!-- Back Button -->
+        <a href="dashboard.html" class="back-btn">
+            ← Volver a Proyectos
+        </a>
+
+        <!-- Project Header -->
+        <div class="dashboard-header">
+            <div>
+                <h2 id="projectName">Cargando...</h2>
+                <span class="project-status" id="projectStatus">DRAFT</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('createTaskModal')">
+                + Nueva Tarea
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Cargando tareas...</p>
+        </div>
+
+        <!-- Tasks Container -->
+        <div class="tasks-container">
+            <h3>Tareas del Proyecto</h3>
+            <div id="tasksList">
+                <!-- Las tareas se cargan dinámicamente aquí -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Crear Tarea -->
+    <div id="createTaskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Crear Nueva Tarea</h3>
+                <button class="close-modal" onclick="closeModal('createTaskModal')">×</button>
+            </div>
+            
+            <form onsubmit="event.preventDefault(); createTask();">
+                <div class="form-group">
+                    <label for="taskTitle">Título de la Tarea</label>
+                    <input 
+                        type="text" 
+                        id="taskTitle" 
+                        placeholder="Ej: Diseñar base de datos"
+                        required
+                    >
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    Crear Tarea
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/project-detail.js"></script>
+</body>
+</html>
